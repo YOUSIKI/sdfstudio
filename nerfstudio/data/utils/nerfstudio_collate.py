@@ -23,10 +23,11 @@ from typing import Callable, Dict, Union
 
 import torch
 import torch.utils.data
-from torch._six import string_classes
 
 from nerfstudio.cameras.cameras import Cameras
 from nerfstudio.utils.images import BasicImages
+
+string_classes = (str, bytes)
 
 # pylint: disable=implicit-str-concat
 NERFSTUDIO_COLLATE_ERR_MSG_FORMAT = (
