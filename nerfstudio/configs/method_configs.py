@@ -40,6 +40,7 @@ from nerfstudio.data.datamanagers.variable_res_datamanager import (
 from nerfstudio.data.dataparsers.blender_dataparser import BlenderDataParserConfig
 from nerfstudio.data.dataparsers.dnerf_dataparser import DNeRFDataParserConfig
 from nerfstudio.data.dataparsers.friends_dataparser import FriendsDataParserConfig
+from nerfstudio.data.dataparsers.heritage_dataparser import HeritageDataParserConfig
 from nerfstudio.data.dataparsers.nerfstudio_dataparser import NerfstudioDataParserConfig
 from nerfstudio.data.dataparsers.phototourism_dataparser import (
     PhototourismDataParserConfig,
@@ -291,7 +292,8 @@ method_configs["neus-facto-bigmlp"] = Config(
     ),
     pipeline=VanillaPipelineConfig(
         datamanager=VanillaDataManagerConfig(
-            dataparser=SDFStudioDataParserConfig(),
+            # dataparser=SDFStudioDataParserConfig(),
+            dataparser=HeritageDataParserConfig(),
             train_num_rays_per_batch=2048,
             eval_num_rays_per_batch=1024,
             camera_optimizer=CameraOptimizerConfig(
@@ -317,7 +319,7 @@ method_configs["neus-facto-bigmlp"] = Config(
         },
     },
     viewer=ViewerConfig(num_rays_per_chunk=1 << 15),
-    vis="viewer",
+    vis="tensorboard",
 )
 
 method_configs["geo-volsdf"] = Config(
@@ -688,7 +690,8 @@ method_configs["neusW"] = Config(
     ),
     pipeline=VanillaPipelineConfig(
         datamanager=VanillaDataManagerConfig(
-            dataparser=SDFStudioDataParserConfig(),
+            # dataparser=SDFStudioDataParserConfig(),
+            dataparser=HeritageDataParserConfig(),
             train_num_rays_per_batch=2048,
             eval_num_rays_per_batch=2048,
             camera_optimizer=CameraOptimizerConfig(
@@ -710,7 +713,7 @@ method_configs["neusW"] = Config(
         },
     },
     viewer=ViewerConfig(num_rays_per_chunk=1 << 15),
-    vis="wandb",
+    vis="tensorboard",
 )
 
 method_configs["neus-acc"] = Config(
