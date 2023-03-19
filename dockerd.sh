@@ -1,5 +1,5 @@
 docker run \
-  --rm -dit \
+  -dit \
   --gpus all \
   --shm-size=12gb \
   --network host \
