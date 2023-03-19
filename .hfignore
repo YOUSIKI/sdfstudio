@@ -1,0 +1,10 @@
+**/.git/
+**/.hfai/
+**/.cache/
+**/__pycache__/
+
+**/._.DS_Store
+**/.DS_Store
+**/__MACOSX/
+
+data/
