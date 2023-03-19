@@ -264,7 +264,7 @@ class Heritage(DataParser):
             if p.point2D_idxs.shape[0] > min_track_length:
                 points_ori.append(p.xyz)
         points_ori = np.array(points_ori)
-        save_points("nori_10.ply", points_ori)
+        # save_points("nori_10.ply", points_ori)
 
         # filter with bbox
         # normalize cropped area to [-1, -1]
@@ -277,7 +277,7 @@ class Heritage(DataParser):
         )
         points_ori = points_ori[mask]
 
-        save_points("nori_10_filterbbox.ply", points_ori)
+        # save_points("nori_10_filterbbox.ply", points_ori)
 
         points_ori = torch.from_numpy(points_ori).float()
 
@@ -298,7 +298,7 @@ class Heritage(DataParser):
         offset_cube *= voxel_size  # voxel size
         expand_points = points_ori[:, None, :] + offset_cube[None]
         expand_points = expand_points.reshape(-1, 3)
-        save_points("expand_points.ply", expand_points.numpy())
+        # save_points("expand_points.ply", expand_points.numpy())
 
         # filter
         # filter out points out of [-1, 1]
@@ -306,7 +306,7 @@ class Heritage(DataParser):
             (expand_points < 1.0), axis=-1, dtype=torch.bool
         )
         filtered_points = expand_points[mask]
-        save_points("filtered_points.ply", filtered_points.numpy())
+        # save_points("filtered_points.ply", filtered_points.numpy())
 
         grid_size = 32
         voxel_size = 2.0 / grid_size
@@ -323,7 +323,7 @@ class Heritage(DataParser):
         mask[index.long()] = True
 
         points_valid = offset_cube[mask]
-        save_points("quantified_points.ply", points_valid.numpy())
+        # save_points("quantified_points.ply", points_valid.numpy())
         # breakpoint()
 
         mask = mask.reshape(grid_size, grid_size, grid_size).contiguous()
